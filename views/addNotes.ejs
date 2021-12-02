@@ -1,0 +1,68 @@
+<%- include('header', {title: `Add Notes`}); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form action="/note" method="POST">
+        <div class="form-group">
+          <label for="habitat">Habitat:</label><br />
+          <input
+            class="form-control"
+            type="text"
+            id="habitat"
+            name="habitat"
+          /><br />
+
+          <label for="date">Date:</label><br />
+          <input class="form-control" type="text" id="date" name="date" /><br />
+
+          <label for="appearance">Appearance:</label><br />
+          <input
+            class="form-control"
+            type="text"
+            id="appearance"
+            name="appearance"
+          /><br />
+
+          <label for="behaviour">Behaviour:</label><br />
+          <input
+            class="form-control"
+            type="text"
+            id="bahaviour"
+            name="bahaviour"
+          /><br />
+
+          <label for="vocalisations">Vocalisations:</label><br />
+          <input
+            class="form-control"
+            type="text"
+            id="vocalisations"
+            name="vocalisations"
+          /><br />
+
+          <label for="flock_size">Flock Size:</label><br />
+          <input
+            class="form-control"
+            type="text"
+            id="flock_size"
+            name="flock_size"
+          /><br />
+
+          <label for="create_time">Note Create Time:</label><br />
+          <input
+            class="form-control"
+            type="text"
+            id="create_time"
+            name="create_time"
+            value="<%- new Date().toISOString().slice(0, 10); %>"
+            readonly
+          /><br />
+
+          <input class="btn btn-secondary" type="submit" value="Submit" /><br />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('footer'); %>

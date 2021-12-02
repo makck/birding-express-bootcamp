@@ -1,0 +1,38 @@
+<%- include('header', {title: `Note Details`}); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-light">
+        <div class="card-header">
+          Sighting at <%= data.habitat %> on <%= data.date %>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">Habitat</h5>
+          <p class="card-text mb-4"><%= data.habitat %></p>
+
+          <h5 class="card-title">Date</h5>
+          <p class="card-text mb-4"><%= data.date %></p>
+
+          <h5 class="card-title">Appearance</h5>
+          <p class="card-text mb-4"><%= data.appearance %></p>
+
+          <h5 class="card-title">Behaviour</h5>
+          <p class="card-text mb-4"><%= data.behaviour %></p>
+
+          <h5 class="card-title">Vocalisations</h5>
+          <p class="card-text mb-4"><%= data.vocalisations %></p>
+
+          <h5 class="card-title">Flock Size</h5>
+          <p class="card-text mb-4"><%= data.flock_size %></p>
+
+          <h5 class="card-title">Note Created Date</h5>
+          <p class="card-text mb-4"><%= data.create_time %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer'); %>

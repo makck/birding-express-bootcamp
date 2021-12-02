@@ -1,0 +1,82 @@
+<%- include('header', {title: `Bird Watching`}); -%>
+
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+  <div class="row d-flex justify-content-around mt-3">
+    <div class="col-sm-4 text-center">
+      <form action="/" method="GET">
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy" name="sortBy">
+          <option value="date_time">Date</option>
+          <option value="shape">Shape</option>
+          <option value="city">City</option>
+        </select>
+
+        <label for="sortOrder">Order:</label>
+        <select id="sortOrder" name="sortOrder">
+          <option value="asc">Ascending</option>
+          <option value="dsc">Descending</option>
+        </select>
+
+        <input class="btn btn-sm btn-secondary" type="submit" value="Submit" />
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <h3>List of Bird Sightings</h3>
+
+      <div class="table-responsive">
+        <table class="table table-sm table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Habitat</th>
+              <th scope="col">Appearance</th>
+              <th scope="col">Details</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% data.forEach((element) => { %>
+            <tr>
+              <td><%= element.date %></td>
+              <td><%= element.habitat %></td>
+              <td><%= element.appearance %></td>
+              <td>
+                <form
+                  action="/note/<%= data.indexOf(element) +1 %>"
+                  method="GET"
+                >
+                  <input
+                    class="btn btn-light btn-sm"
+                    type="submit"
+                    value="View"
+                  />
+                </form>
+              </td>
+              <td>
+                <form
+                  action="/note/<%= data.indexOf(element) +1 %>/delete?_method=DELETE"
+                  method="POST"
+                >
+                  <input
+                    class="btn btn-light btn-sm"
+                    type="submit"
+                    value="Delete"
+                  />
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('footer'); -%>
