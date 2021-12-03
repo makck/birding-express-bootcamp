@@ -5,42 +5,91 @@
     <div class="col">
       <div class="card bg-light">
         <div class="card-header">
-          Sighting at <%= data.habitat %> on <%= data.date %>
+          Sighting at <%= noteData[0].habitat %> on <%= noteData[0].date %>
         </div>
 
         <div class="card-body">
           <h5 class="card-title">Species</h5>
-          <p class="card-text mb-4"><%= data[0].species_name %></p>
+          <p class="card-text mb-4"><%= noteData[0].species_name %></p>
 
           <h5 class="card-title">Habitat</h5>
-          <p class="card-text mb-4"><%= data[0].habitat %></p>
+          <p class="card-text mb-4"><%= noteData[0].habitat %></p>
 
           <h5 class="card-title">Date</h5>
-          <p class="card-text mb-4"><%= data[0].date %></p>
+          <p class="card-text mb-4"><%= noteData[0].date %></p>
 
           <h5 class="card-title">Appearance</h5>
-          <p class="card-text mb-4"><%= data[0].appearance %></p>
+          <p class="card-text mb-4"><%= noteData[0].appearance %></p>
 
           <h5 class="card-title">Behaviour</h5>
           <p class="card-text mb-4">
-            <% data.forEach((element) => { %> <%= element.description %>. <% });
-            %>
+            <% noteData.forEach((element) => { %> <%= element.description %>. <%
+            }); %>
           </p>
 
-          <h5 class="card-title">Behaviour</h5>
-          <p class="card-text mb-4"><%= data[0].behaviour %></p>
-
           <h5 class="card-title">Vocalisations</h5>
-          <p class="card-text mb-4"><%= data[0].vocalisations %></p>
+          <p class="card-text mb-4"><%= noteData[0].vocalisations %></p>
 
           <h5 class="card-title">Flock Size</h5>
-          <p class="card-text mb-4"><%= data[0].flock_size %></p>
+          <p class="card-text mb-4"><%= noteData[0].flock_size %></p>
 
           <h5 class="card-title">Created Date</h5>
-          <p class="card-text mb-4"><%= data[0].create_time %></p>
+          <p class="card-text mb-4"><%= noteData[0].create_time %></p>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="row mt-5">
+    <section class="mb-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 col-md-6 col-12 pb-4">
+            <h1>Comments</h1>
+            <% commentsData.forEach((element) => { %>
+            <div class="comment mt-4 text-justify float-left">
+              <h4><%= element.username %></h4>
+              <span><small><%= element.create_time %></small></span> <br />
+              <p><%= element.content %></p>
+            </div>
+            <% }); %>
+          </div>
+
+          <div
+            class="
+              col-lg-4 col-md-5 col-sm-4
+              offset-md-1 offset-sm-1
+              col-12
+              mt-4
+            "
+          >
+            <form action="/note/<%= selectedNote%>/comment" method="POST">
+              <div class="form-group">
+                <h4>Leave a comment</h4>
+                <label for="message">Message</label>
+                <textarea
+                  name="content"
+                  id="content"
+                  msg
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                  style="background-color: white"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <p><small>Commenting as <%= userName %></small></p>
+              </div>
+              <input
+                class="btn btn-secondary"
+                type="submit"
+                value="Post"
+              /><br />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </div>
 
