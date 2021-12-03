@@ -4,14 +4,31 @@ import pg from 'pg';
 import jsSHA from 'jssha';
 import cookieParser from 'cookie-parser';
 
-// Initialise DB connection
+const PORT = process.argv[2];
+
 const { Pool } = pg;
-const pgConnectConfigs = {
-  user: 'Chan Keet',
-  host: 'localhost',
-  database: 'birdings',
-  port: 5432,
-};
+// create separate DB connection configs for production vs non-production environments.
+// ensure our server still works on our local machines.
+let pgConnectConfigs;
+if (process.env.ENV === 'PRODUCTION') {
+  // determine how we connect to the remote Postgres server
+  pgConnectConfigs = {
+    user: 'postgres',
+    // set DB_PASSWORD as an environment variable for security.
+    password: process.env.DB_PASSWORD,
+    host: 'localhost',
+    database: 'birding',
+    port: 5432,
+  };
+} else {
+  // determine how we connect to the local Postgres server
+  pgConnectConfigs = {
+    user: 'Chan Keet',
+    host: 'localhost',
+    database: 'birdings',
+    port: 5432,
+  };
+}
 
 const pool = new Pool(pgConnectConfigs);
 
@@ -297,4 +314,4 @@ app.post('/note/:id/comment', (req, res) => {
   });
 });
 
-app.listen(3004);
+app.listen(PORT);
