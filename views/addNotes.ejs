@@ -5,6 +5,13 @@
     <div class="col">
       <form action="/note" method="POST">
         <div class="form-group">
+          <label for="species_id">Species:</label><br />
+          <select name="species_id">
+            <% speciesData.species.forEach((element) => { %>
+            <option value="<%= element.id %>"><%= element.name%></option>
+            <% }); %></select
+          ><br /><br />
+
           <label for="habitat">Habitat:</label><br />
           <input
             class="form-control"
@@ -48,7 +55,7 @@
             name="flock_size"
           /><br />
 
-          <label for="create_time">Note Create Time:</label><br />
+          <label for="create_time">Note Create Date:</label><br />
           <input
             class="form-control"
             type="text"
@@ -58,13 +65,21 @@
             readonly
           /><br />
 
-          <label for="username">Note Created By:</label><br />
+          <label for="userShow">Note Created By:</label><br />
           <input
             class="form-control"
             type="text"
+            id="userShow"
+            value="<%- userID[1] %>"
+            readonly
+          /><br />
+
+          <input
+            class="form-control"
+            type="hidden"
             id="username"
             name="username"
-            value="<%- userID %>"
+            value="<%- userID[0] %>"
             readonly
           /><br />
 
