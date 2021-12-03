@@ -10,28 +10,34 @@
 
         <div class="card-body">
           <h5 class="card-title">Species</h5>
-          <p class="card-text mb-4"><%= data.species_name %></p>
+          <p class="card-text mb-4"><%= data[0].species_name %></p>
 
           <h5 class="card-title">Habitat</h5>
-          <p class="card-text mb-4"><%= data.habitat %></p>
+          <p class="card-text mb-4"><%= data[0].habitat %></p>
 
           <h5 class="card-title">Date</h5>
-          <p class="card-text mb-4"><%= data.date %></p>
+          <p class="card-text mb-4"><%= data[0].date %></p>
 
           <h5 class="card-title">Appearance</h5>
-          <p class="card-text mb-4"><%= data.appearance %></p>
+          <p class="card-text mb-4"><%= data[0].appearance %></p>
 
           <h5 class="card-title">Behaviour</h5>
-          <p class="card-text mb-4"><%= data.behaviour %></p>
+          <p class="card-text mb-4">
+            <% data.forEach((element) => { %> <%= element.description %>. <% });
+            %>
+          </p>
+
+          <h5 class="card-title">Behaviour</h5>
+          <p class="card-text mb-4"><%= data[0].behaviour %></p>
 
           <h5 class="card-title">Vocalisations</h5>
-          <p class="card-text mb-4"><%= data.vocalisations %></p>
+          <p class="card-text mb-4"><%= data[0].vocalisations %></p>
 
           <h5 class="card-title">Flock Size</h5>
-          <p class="card-text mb-4"><%= data.flock_size %></p>
+          <p class="card-text mb-4"><%= data[0].flock_size %></p>
 
           <h5 class="card-title">Created Date</h5>
-          <p class="card-text mb-4"><%= data.create_time %></p>
+          <p class="card-text mb-4"><%= data[0].create_time %></p>
         </div>
       </div>
     </div>

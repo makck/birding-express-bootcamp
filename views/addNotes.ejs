@@ -32,12 +32,20 @@
           /><br />
 
           <label for="behaviour">Behaviour:</label><br />
-          <input
-            class="form-control"
-            type="text"
-            id="bahaviour"
-            name="bahaviour"
-          /><br />
+          <% behaviourData.behaviours.forEach((element) => { %>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="behavioud_id"
+              name="behaviour_id"
+              value="<%= element.id %>"
+            />
+            <label class="form-check-label for=" behavioud_id
+              ><%= element.description %></label
+            >
+          </div>
+          <% }); %><br /><br />
 
           <label for="vocalisations">Vocalisations:</label><br />
           <input
